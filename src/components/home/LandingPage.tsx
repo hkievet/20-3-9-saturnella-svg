@@ -8,6 +8,14 @@ import HeaderContainer from "../layout/HeaderContainer";
 import GlobalStyles from "../layout/GlobalStyles";
 import Globs from "../hksvg/WeirdRotateAnimation";
 import SvgSelectionMenu from "../hksvg/SvgSelectionMenu";
+import {
+  MyGuyStillImage,
+  MyGuyPath,
+  MyGuyPattern
+} from "../hksvg/paths/MyGuyPath";
+import UntitledCardPathSVG, {
+  UntitledCardPattern
+} from "../hksvg/paths/UntitledCardPath";
 //import PatternSvg from "../../assets/pattern-svg.inline";
 //import svgfileurl, {
 //ReactComponent as svgFile
@@ -35,6 +43,9 @@ const VerticalColumn = styled.div`
 `;
 
 export const App = () => {
+  const [selectedSVG, setSelectedSVG] = React.useState<any>(
+    UntitledCardPattern
+  );
   const [isTriggered, setIsTriggered] = React.useState(false);
   const toggleMe = () => {
     setIsTriggered(!isTriggered);
@@ -48,9 +59,12 @@ export const App = () => {
         <Header>Saturnella</Header>
       </HeaderContainer>
       <ContainerBody>
-        <VerticalBarSVG animated={isTriggered} />
+        <VerticalBarSVG
+          animated={isTriggered}
+          component={UntitledCardPattern}
+        ></VerticalBarSVG>
         <VerticalColumn>
-          <SvgSelectionMenu />
+          <SvgSelectionMenu onClick={setSelectedSVG} />
           <TextSection>
             <p>
               This Page Requires a good browser (ie, not ie11. really, stop
@@ -73,7 +87,11 @@ export const App = () => {
           </TextSection>
           <Square />
         </VerticalColumn>
-        <VerticalBarSVG reversed={true} animated={isTriggered} />
+        <VerticalBarSVG
+          animated={isTriggered}
+          component={MyGuyPattern}
+          reversed={true}
+        ></VerticalBarSVG>
       </ContainerBody>
     </AppContainer>
   );

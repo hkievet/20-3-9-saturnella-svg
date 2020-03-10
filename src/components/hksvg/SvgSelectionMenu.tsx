@@ -5,23 +5,29 @@ import { MyGuyStillImage } from "./paths/MyGuyPath";
 import { Keys } from "../hksvg/WeirdRotateAnimation";
 import UntitledCardPathSVG from "./paths/UntitledCardPath";
 
-export interface ISvgSelectionMenuProps {}
-
-const Div = styled.div`
-  height: 300px;
-  background-color: white;
+const DivWrapper = styled.div`
+  display: flex;
   color: black;
-  padding: 36px;
+  flex-direction: column;
+  background-color: white;
   margin: 36px;
   border-radius: 6px;
+  text-align: center;
+`;
+
+const Div = styled.div`
+  padding: 36px;
+  padding-top: 0px;
+  color: black;
   display: flex;
   flex-direction: row;
 `;
 
 const MenuItem = styled.button`
   border: 12px solid black;
-  margin: 12px;
+  margin: 0;
   overflow-y: hidden;
+  margin: 0 12px;
   &:hover {
     border: 12px dashed black;
     cursor: pointer;
@@ -32,25 +38,30 @@ const MenuItem = styled.button`
   }
 `;
 
-const SVGStyled = styled(svgCollection.a.pattern)`
-  height: 100%;
-  width: 100%;
+const H2 = styled.h2`
+  font-size: 24px;
+  font-family: "Spartan", sans-serif;
+  line-height: 36px;
 `;
 
+export interface ISvgSelectionMenuProps {
+  onClick: (component: React.FC<any>) => void;
+}
+
 export const SvgSelectionMenu: React.FC<ISvgSelectionMenuProps> = props => {
-  const Item = styled(svgCollection.b.pattern)``;
+  const Item = styled(svgCollection.untitled.still)``;
+  const sectionA = (
+    <MenuItem
+      onClick={() => {
+        return props.onClick(MyGuyStillImage);
+      }}
+    ></MenuItem>
+  );
   return (
-    <Div>
-      <MenuItem>
-        <MyGuyStillImage />
-      </MenuItem>
-      <MenuItem>
-        <Item />
-      </MenuItem>
-      <MenuItem>
-        <UntitledCardPathSVG />
-      </MenuItem>
-    </Div>
+    <DivWrapper>
+      <H2>Asuhh</H2>
+      <Div>{sectionA}</Div>
+    </DivWrapper>
   );
 };
 

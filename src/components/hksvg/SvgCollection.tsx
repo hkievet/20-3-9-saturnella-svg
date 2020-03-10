@@ -2,18 +2,23 @@ import url1, {
   ReactComponent as BadHeartsVerticalPattern
 } from "../../assets/bad_heart_vertical_pattern.svg";
 import url2, { ReactComponent as MyGuy } from "../../assets/my_guy.svg";
+import { MyGuyStillImage, MyGuyPath } from "./paths/MyGuyPath";
+import UntitledCardPathSVG, {
+  UntitledCardPath,
+  UntitledCardPattern
+} from "./paths/UntitledCardPath";
 
 export { BadHeartsVerticalPattern };
 export { MyGuy };
 
 const collection = {
-  a: {
-    pattern: BadHeartsVerticalPattern,
-    url: url1
+  myguy: {
+    pattern: MyGuyStillImage,
+    still: MyGuyStillImage
   },
-  b: {
-    pattern: MyGuy,
-    url: url2
+  untitled: {
+    pattern: UntitledCardPattern,
+    still: UntitledCardPathSVG
   }
 };
 

@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import GenericSVG from "./GenericSVG";
 
 export interface IMyGuyPathProps {}
 
@@ -12,14 +13,14 @@ export const MyGuyPath: React.FC<IMyGuyPathProps> = props => {
         transform="translate(-6.85 0.5)"
         fill="none"
         stroke="#000"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
       />
       <path
         d="M73.75,47.7"
         transform="translate(-6.85 0.5)"
         fill="none"
         stroke="#000"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
       />
       <circle
         cx="20.95"
@@ -27,7 +28,7 @@ export const MyGuyPath: React.FC<IMyGuyPathProps> = props => {
         r="8.64"
         fill="none"
         stroke="#000"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
       />
     </g>
   );
@@ -45,5 +46,29 @@ export const MyGuyStillImage: React.FC<IMyGuyStillImageProps> = props => {
     <SVG>
       <MyGuyPath />
     </SVG>
+  );
+};
+
+export interface IMyGuyPatternProps {
+  reversed: boolean;
+}
+
+export const MyGuyPattern: React.FC<IMyGuyPatternProps> = props => {
+  return (
+    <GenericSVG reversed={props?.reversed}>
+      <defs>
+        <pattern
+          id="puzzle"
+          width="120"
+          height="120"
+          patternUnits="userSpaceOnUse"
+        >
+          <MyGuyPath />
+        </pattern>
+      </defs>
+      <g>
+        <rect fill="url(#puzzle)" width="100%" height="100%"></rect>
+      </g>
+    </GenericSVG>
   );
 };

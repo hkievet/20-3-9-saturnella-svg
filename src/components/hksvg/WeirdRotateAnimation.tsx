@@ -8,7 +8,7 @@ export const Keys = keyframes`
     transform: rotateY(180deg)
   }
   to {
-    transform: rotateX(0);
+    transform: rotateY(0);
   }
 `;
 
