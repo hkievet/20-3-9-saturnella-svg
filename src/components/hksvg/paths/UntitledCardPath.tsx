@@ -159,7 +159,7 @@ export const SVG = styled.svg<ISVGParams>`
 `;
 
 export interface IUntitledCardPathSVGProps {
-  reversed: boolean;
+  reversed?: boolean;
 }
 
 export const UntitledCardPathSVG: React.FC<IUntitledCardPathSVGProps> = props => {
@@ -178,7 +178,7 @@ export interface IUntitledCardPatternProps {
   reversed: boolean;
 }
 
-export const _UntitledCardPattern: React.FC<IUntitledCardPatternProps> = props => {
+export const UntitledCardPattern: React.FC<IUntitledCardPatternProps> = props => {
   return (
     <svg>
       <defs>
@@ -197,7 +197,5 @@ export const _UntitledCardPattern: React.FC<IUntitledCardPatternProps> = props =
     </svg>
   );
 };
-
-export const UntitledCardPattern = styled(_UntitledCardPattern)``;
 
 export default UntitledCardPathSVG;

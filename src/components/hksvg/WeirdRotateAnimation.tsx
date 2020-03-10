@@ -11,10 +11,3 @@ export const Keys = keyframes`
     transform: rotateY(0);
   }
 `;
-
-const Globs = createGlobalStyle`
-    transition: 2s;
-    animation: ${Keys} 2s linear infinite;
-`;
-
-export default Globs;

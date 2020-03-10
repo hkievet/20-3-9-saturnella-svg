@@ -1,9 +1,8 @@
 import * as React from "react";
-import { svgCollection } from "./SvgCollection";
+import collection, { svgCollection } from "./SvgCollection";
 import styled from "styled-components";
 import { MyGuyStillImage } from "./paths/MyGuyPath";
 import { Keys } from "../hksvg/WeirdRotateAnimation";
-import UntitledCardPathSVG from "./paths/UntitledCardPath";
 
 const DivWrapper = styled.div`
   display: flex;
@@ -48,19 +47,33 @@ export interface ISvgSelectionMenuProps {
   onClick: (component: React.FC<any>) => void;
 }
 
+const Image2 = collection.untitled.still;
 export const SvgSelectionMenu: React.FC<ISvgSelectionMenuProps> = props => {
-  const Item = styled(svgCollection.untitled.still)``;
   const sectionA = (
     <MenuItem
       onClick={() => {
-        return props.onClick(MyGuyStillImage);
+        return;
       }}
-    ></MenuItem>
+    >
+      <MyGuyStillImage />
+    </MenuItem>
+  );
+  const sectionB = (
+    <MenuItem
+      onClick={() => {
+        return;
+      }}
+    >
+      <Image2 />
+    </MenuItem>
   );
   return (
     <DivWrapper>
-      <H2>Asuhh</H2>
-      <Div>{sectionA}</Div>
+      <H2>Pick A Card</H2>
+      <Div>
+        {sectionA}
+        {sectionB}
+      </Div>
     </DivWrapper>
   );
 };

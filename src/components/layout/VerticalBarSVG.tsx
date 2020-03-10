@@ -16,7 +16,6 @@ const animationPropertyReverse = css`
 export interface IVerticalBarSVGProps {
   reversed?: boolean;
   animated?: boolean;
-  component: React.FC<any>;
 }
 
 export interface IVerticalBarWrapper {
@@ -44,11 +43,12 @@ const VerticalBarWrapper = styled.div<IVerticalBarWrapper>`
   }
 `;
 
+const BLAM = collection.myguy.pattern;
 export const VerticalBarSVG: React.FC<IVerticalBarSVGProps> = props => {
   const { reversed = false, animated = false } = props;
   return (
     <VerticalBarWrapper reversed={reversed} animated={animated}>
-      <props.component reversed={reversed} />
+      <BLAM reversed={reversed} />
     </VerticalBarWrapper>
   );
 };

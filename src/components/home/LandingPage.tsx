@@ -1,21 +1,13 @@
 import * as React from "react";
-import styled, { createGlobalStyle, keyframes } from "styled-components";
+import styled from "styled-components";
 import VerticalBarSVG from "../layout/VerticalBarSVG";
-import PatternSVG, { Square } from "../hksvg/Square";
-import Animation from "../hksvg/Animation";
 import ContainerBody from "../layout/ContainerBody";
 import HeaderContainer from "../layout/HeaderContainer";
 import GlobalStyles from "../layout/GlobalStyles";
-import Globs from "../hksvg/WeirdRotateAnimation";
 import SvgSelectionMenu from "../hksvg/SvgSelectionMenu";
-import {
-  MyGuyStillImage,
-  MyGuyPath,
-  MyGuyPattern
-} from "../hksvg/paths/MyGuyPath";
-import UntitledCardPathSVG, {
-  UntitledCardPattern
-} from "../hksvg/paths/UntitledCardPath";
+import { MyGuyPattern } from "../hksvg/paths/MyGuyPath";
+import { UntitledCardPattern } from "../hksvg/paths/UntitledCardPath";
+import Square from "../hksvg/Square";
 //import PatternSvg from "../../assets/pattern-svg.inline";
 //import svgfileurl, {
 //ReactComponent as svgFile
@@ -51,7 +43,6 @@ export const App = () => {
     setIsTriggered(!isTriggered);
   };
 
-  const AnimationCss = isTriggered ? <Globs /> : <></>;
   return (
     <AppContainer>
       <GlobalStyles />
@@ -59,10 +50,9 @@ export const App = () => {
         <Header>Saturnella</Header>
       </HeaderContainer>
       <ContainerBody>
-        <VerticalBarSVG
-          animated={isTriggered}
-          component={UntitledCardPattern}
-        ></VerticalBarSVG>
+        <VerticalBarSVG animated={isTriggered}>
+          <UntitledCardPattern reversed={false} />
+        </VerticalBarSVG>
         <VerticalColumn>
           <SvgSelectionMenu onClick={setSelectedSVG} />
           <TextSection>
@@ -87,11 +77,9 @@ export const App = () => {
           </TextSection>
           <Square />
         </VerticalColumn>
-        <VerticalBarSVG
-          animated={isTriggered}
-          component={MyGuyPattern}
-          reversed={true}
-        ></VerticalBarSVG>
+        <VerticalBarSVG animated={isTriggered} reversed={true}>
+          <MyGuyPattern reversed={true} />
+        </VerticalBarSVG>
       </ContainerBody>
     </AppContainer>
   );
