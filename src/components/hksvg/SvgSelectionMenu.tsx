@@ -44,7 +44,7 @@ const H2 = styled.h2`
 `;
 
 export interface ISvgSelectionMenuProps {
-  onClick: (component: React.FC<any>) => void;
+  onClick: (component: keyof typeof collection) => void;
 }
 
 const Image2 = collection.untitled.still;
@@ -52,7 +52,7 @@ export const SvgSelectionMenu: React.FC<ISvgSelectionMenuProps> = props => {
   const sectionA = (
     <MenuItem
       onClick={() => {
-        return;
+        return props.onClick("myguy");
       }}
     >
       <MyGuyStillImage />
@@ -61,7 +61,7 @@ export const SvgSelectionMenu: React.FC<ISvgSelectionMenuProps> = props => {
   const sectionB = (
     <MenuItem
       onClick={() => {
-        return;
+        return props.onClick("untitled");
       }}
     >
       <Image2 />

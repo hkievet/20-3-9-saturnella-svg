@@ -50,12 +50,13 @@ export const MyGuyStillImage: React.FC<IMyGuyStillImageProps> = props => {
 };
 
 export interface IMyGuyPatternProps {
-  reversed: boolean;
+  reversed?: boolean;
+  animated?: boolean;
 }
 
 export const MyGuyPattern: React.FC<IMyGuyPatternProps> = props => {
   return (
-    <GenericSVG reversed={props?.reversed}>
+    <GenericSVG reversed={props?.reversed} animated={props.animated}>
       <defs>
         <pattern
           id="puzzle"

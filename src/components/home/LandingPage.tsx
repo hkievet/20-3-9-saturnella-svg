@@ -8,6 +8,7 @@ import SvgSelectionMenu from "../hksvg/SvgSelectionMenu";
 import { MyGuyPattern } from "../hksvg/paths/MyGuyPath";
 import { UntitledCardPattern } from "../hksvg/paths/UntitledCardPath";
 import Square from "../hksvg/Square";
+import collection from "../hksvg/SvgCollection";
 //import PatternSvg from "../../assets/pattern-svg.inline";
 //import svgfileurl, {
 //ReactComponent as svgFile
@@ -35,13 +36,15 @@ const VerticalColumn = styled.div`
 `;
 
 export const App = () => {
-  const [selectedSVG, setSelectedSVG] = React.useState<any>(
-    UntitledCardPattern
+  const [selectedSVG, setSelectedSVG] = React.useState<keyof typeof collection>(
+    "untitled"
   );
   const [isTriggered, setIsTriggered] = React.useState(false);
   const toggleMe = () => {
     setIsTriggered(!isTriggered);
   };
+
+  const SVG = collection[selectedSVG].pattern;
 
   return (
     <AppContainer>
@@ -50,8 +53,8 @@ export const App = () => {
         <Header>Saturnella</Header>
       </HeaderContainer>
       <ContainerBody>
-        <VerticalBarSVG animated={isTriggered}>
-          <UntitledCardPattern reversed={false} />
+        <VerticalBarSVG isReversed={false}>
+          <SVG animated={isTriggered} />
         </VerticalBarSVG>
         <VerticalColumn>
           <SvgSelectionMenu onClick={setSelectedSVG} />
@@ -77,8 +80,8 @@ export const App = () => {
           </TextSection>
           <Square />
         </VerticalColumn>
-        <VerticalBarSVG animated={isTriggered} reversed={true}>
-          <MyGuyPattern reversed={true} />
+        <VerticalBarSVG isReversed={true}>
+          <SVG reversed={true} animated={isTriggered} />
         </VerticalBarSVG>
       </ContainerBody>
     </AppContainer>

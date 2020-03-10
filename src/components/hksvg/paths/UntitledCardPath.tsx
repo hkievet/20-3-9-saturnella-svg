@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import GenericSVG from "./GenericSVG";
 
 export interface IUntitledCardImagePath {}
 
@@ -175,12 +176,17 @@ export const UntitledCardPathSVG: React.FC<IUntitledCardPathSVGProps> = props =>
 };
 
 export interface IUntitledCardPatternProps {
-  reversed: boolean;
+  reversed?: boolean;
+  animated?: boolean;
 }
 
-export const UntitledCardPattern: React.FC<IUntitledCardPatternProps> = props => {
+export const _UntitledCardPattern: React.FC<IUntitledCardPatternProps> = props => {
   return (
-    <svg>
+    <GenericSVG
+      reversed={props?.reversed}
+      animated={props.animated}
+      preserveAspectRatio="xMidYMid meet"
+    >
       <defs>
         <pattern
           id="puzzle"
@@ -194,8 +200,10 @@ export const UntitledCardPattern: React.FC<IUntitledCardPatternProps> = props =>
       <g>
         <rect fill="url(#puzzle)" width="100%" height="100%"></rect>
       </g>
-    </svg>
+    </GenericSVG>
   );
 };
+
+export const UntitledCardPattern = styled(_UntitledCardPattern)``;
 
 export default UntitledCardPathSVG;

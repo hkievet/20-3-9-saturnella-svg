@@ -1,10 +1,9 @@
 import url1, {
   ReactComponent as BadHeartsVerticalPattern
 } from "../../assets/bad_heart_vertical_pattern.svg";
-import url2, { ReactComponent as MyGuy } from "../../assets/my_guy.svg";
-import { MyGuyStillImage, MyGuyPath, MyGuyPattern } from "./paths/MyGuyPath";
+import { ReactComponent as MyGuy } from "../../assets/my_guy.svg";
+import { MyGuyStillImage, MyGuyPattern } from "./paths/MyGuyPath";
 import UntitledCardPathSVG, {
-  UntitledCardPath,
   UntitledCardPattern
 } from "./paths/UntitledCardPath";
 

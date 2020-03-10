@@ -4,53 +4,24 @@ import styled, { css } from "styled-components";
 import { Keys } from "../hksvg/WeirdRotateAnimation";
 import collection from "../hksvg/SvgCollection";
 
-const animationProperty = css`
-  animation: ${Keys} 2s linear infinite;
-`;
-
-const animationPropertyReverse = css`
-  animation: ${Keys} 2s linear infinite;
-  animation-direction: reverse;
-`;
-
-export interface IVerticalBarSVGProps {
-  reversed?: boolean;
-  animated?: boolean;
+interface IVerticalBarSVG {
+  isReversed: boolean;
 }
 
-export interface IVerticalBarWrapper {
-  reversed?: boolean;
-  animated?: boolean;
-}
-
-const VerticalBarWrapper = styled.div<IVerticalBarWrapper>`
+const VerticalBarWrapper = styled.div<IVerticalBarSVG>`
   display: flex;
-  width: 120px;
+  max-width: 120px;
   @media (max-width: 768px) {
     display: none;
   }
-  ${props => {
-    if (props.animated) {
-      if (props?.reversed) {
-        return animationProperty;
-      } else {
-        return animationPropertyReverse;
-      }
-    }
-  }};
   path {
     stroke: white;
   }
+  ${props => (props.isReversed ? "transform: scaleX(-1)" : "")}
 `;
 
-const BLAM = collection.myguy.pattern;
-export const VerticalBarSVG: React.FC<IVerticalBarSVGProps> = props => {
-  const { reversed = false, animated = false } = props;
-  return (
-    <VerticalBarWrapper reversed={reversed} animated={animated}>
-      <BLAM reversed={reversed} />
-    </VerticalBarWrapper>
-  );
+export const VerticalBarSVG: React.FC<IVerticalBarSVG> = props => {
+  return <VerticalBarWrapper {...props}>{props.children}</VerticalBarWrapper>;
 };
 
 export default VerticalBarSVG;
